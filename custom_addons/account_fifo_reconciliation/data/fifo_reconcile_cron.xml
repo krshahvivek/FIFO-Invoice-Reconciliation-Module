@@ -2,16 +2,11 @@
 <odoo>
     <record id="ir_cron_fifo_auto_reconcile" model="ir.cron">
         <field name="name">FIFO Auto Reconciliation</field>
-
-        <!-- IMPORTANT: model_id is no longer used for execution logic,
-             but still required for metadata -->
         <field name="model_id" ref="base.model_res_company"/>
-
         <field name="state">code</field>
         <field name="code">
             env['account.fifo.reconciliation.service'].run_fifo_reconciliation()
         </field>
-
         <field name="interval_number">1</field>
         <field name="interval_type">hours</field>
         <field name="active">True</field>
